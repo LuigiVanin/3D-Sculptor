@@ -3,12 +3,14 @@
 	<iostream>
 	"Sculptor.h"
 
-1615305749 /home/htnek/Documentos/Projeto de PA/sculptor_3d/include/Sculptor.h
-	"../voxel.h"
+1615306870 /home/htnek/Documentos/Projeto de PA/sculptor_3d/include/Sculptor.h
+	"voxel.h"
 
 1615088707 /home/htnek/Documentos/Projeto de PA/sculptor_3d/voxel.h
 
 1615305564 source:/home/htnek/Documentos/Projeto de PA/sculptor_3d/src/Sculptor.cpp
 	<iostream>
 	"Sculptor.h"
+
+1615306803 /home/htnek/Documentos/Projeto de PA/sculptor_3d/include/voxel.h
 
