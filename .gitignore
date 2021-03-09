@@ -1,4 +1,5 @@
 sculptor_3d.cbp
-sculptor_3.layout
+sculptor_3d.layout
 bin/
 obj/
+sculptor_3d.depend
