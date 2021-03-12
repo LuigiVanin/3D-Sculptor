@@ -1,5 +1,6 @@
 #include <iostream>
 #include <fstream>
+#include <cmath>
 #include "Sculptor.h"
 
 Sculptor::Sculptor(int _nx, int _ny, int _nz)
@@ -53,8 +54,7 @@ void Sculptor::getColors(){
 
 
 void Sculptor::putVoxel(int x, int y, int z){
-    //if to guarantee that voxel will be placed at a existing index of v.
-    if ((x < nx && x >= 0) || (y < ny  && y >= 0)|| (z < nz && z >= 0))
+    if ((x < nx && x >= 0) || (y < ny  && y >= 0) || (z < nz && z >= 0))
     {
         v[x][y][z].r = r;
         v[x][y][z].g = g;
@@ -91,6 +91,51 @@ void Sculptor::cutBox(int x0, int y0, int z0, int l, int h, int w){
         }
     }
 }
+
+void Sculptor::putDisc(int xcenter,int ycenter,int zcenter,int r, int h){
+    for (int y = ycenter; y < ycenter+ h; y++){
+        for(int x = xcenter - r; x < xcenter + r; x++){
+            for(int z = zcenter - (round(sqrt(pow(r, 2) - pow(x - xcenter, 2)))); z < zcenter + (round(sqrt(pow(r, 2) - pow(x - xcenter, 2)))); z++ ){
+                Sculptor::putVoxel(x, y, z );
+            }
+        }
+    }
+}
+
+void Sculptor::cutDisc(int xcenter,int ycenter,int zcenter,int r, int h){
+    for (int y = ycenter; y < ycenter+ h; y++){
+        for(int x = xcenter - r; x < xcenter + r; x++){
+            for(int z = zcenter - (round(sqrt(pow(r, 2) - pow(x - xcenter, 2)))); z < zcenter + (round(sqrt(pow(r, 2) - pow(x - xcenter, 2)))); z++ ){
+                Sculptor::cutVoxel(x, y, z );
+            }
+        }
+    }
+}
+
+void Sculptor::putSphere(int xcenter, int ycenter, int zcenter, int r){
+    for(int x = xcenter - r; x < xcenter + r; x++){
+        for(int y = ycenter - r; y < ycenter + r; y++){
+            for(int z = zcenter - r; z < zcenter + r; z++){
+                if(pow(z - zcenter, 2) + pow(y - ycenter, 2) + pow(x - xcenter, 2) < pow(r, 2)){
+                    Sculptor::putVoxel(x, y, z);
+                }
+            }
+        }
+    }
+}
+
+void Sculptor::cutSphere(int xcenter, int ycenter, int zcenter, int r){
+    for(int x = xcenter - r; x < xcenter + r; x++){
+        for(int y = ycenter - r; y < ycenter + r; y++){
+            for(int z = zcenter - r; z < zcenter + r; z++){
+                if(pow(z - zcenter, 2) + pow(y - ycenter, 2) + pow(x - xcenter, 2) < pow(r, 2)){
+                    Sculptor::cutVoxel(x, y, z);
+                }
+            }
+        }
+    }
+}
+
 
 void Sculptor::writeOFF(char* filename)
 {

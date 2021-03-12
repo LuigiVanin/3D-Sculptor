@@ -24,10 +24,15 @@ public:
     void cutVoxel(int x, int y, int z);
     void putBox(int x0, int y0, int z0, int l, int h, int w);
     void cutBox(int x0, int y0, int z0, int l, int h, int w);
+    void putDisc(int xcenter, int ycenter, int zcenter, int r, int h);
+    void cutDisc(int xcenter, int ycenter, int zcenter, int r, int h);
+
+    void putSphere(int xcenter, int ycenter, int zcenter, int r);
+    void cutSphere(int xcenter, int ycenter, int zcenter, int r);
     // functions that have yet to be implemented:
 
 
-    //void putSphere(int xcenter, int ycenter, int zcenter, int radius);
+
     //void cutSphere(int xcenter, int ycenter, int zcenter, int radius);
     //void putEllipsoid(int xcenter, int ycenter, int zcenter, int rx, int ry, int rz);
     //void cutEllipsoid(int xcenter, int ycenter, int zcenter, int rx, int ry, int rz);
