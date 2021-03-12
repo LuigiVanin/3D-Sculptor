@@ -37,7 +37,7 @@ void Sculptor::alocaMemoria(){
             }
         }
     }
-    std :: cout << "fuck the world\n";
+    std :: cout << "memória alocada para a matriz\n";
 }
 
 void Sculptor::setColor(float _r, float _g, float _b, float _alfa){
@@ -46,6 +46,7 @@ void Sculptor::setColor(float _r, float _g, float _b, float _alfa){
     b = _b;
     alfa = _alfa;
 }
+
 void Sculptor::getColors(){
     std::cout <<r <<" "<< g<<" " << b<<" "<< alfa <<std::endl;
 }
@@ -71,11 +72,33 @@ void Sculptor::cutVoxel(int x, int y, int z)
     }
 }
 
+void Sculptor::putBox(int x0, int y0, int z0, int l, int h, int w){
+    for (int x = x0; x < x0 + l; x++){
+        for(int y = y0; y < y0 + h; y++){
+            for(int z = z0; z < z0 + w; z++){
+                Sculptor::putVoxel(x, y, z);
+            }
+        }
+    }
+}
+
+void Sculptor::cutBox(int x0, int y0, int z0, int l, int h, int w){
+    for (int x = x0; x < x0 + l; x++){
+        for(int y = y0; y < y0 + h; y++){
+            for(int z = z0; z < z0 + w; z++){
+                Sculptor::cutVoxel(x, y, z);
+            }
+        }
+    }
+}
+
 void Sculptor::writeOFF(char* filename)
 {
+    std::cout<<"opening file " << filename <<"...\n\n";
     int index = 0, total = 0;
     std :: ofstream file;
     file.open(filename);
+    std::cout<< filename <<" file opened!\n\n";
     file << "OFF\n";
 
     for(int x = 0; x < nx; x++){
@@ -141,8 +164,6 @@ void Sculptor::writeOFF(char* filename)
     }
 
     file.close();
+    std::cout<<filename<<" closed sucesseful!\n\n";
 }
 
-//void Sculptor::putBox(int x, int y, int z){
-
-//}
