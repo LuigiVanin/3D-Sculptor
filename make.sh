@@ -1,2 +1,10 @@
+#!/bin/bash
+# arquivo responsável por montar o arquivo executável
 
-# arquivo responsável por montar o arquivo eecutável
+MYPATH='/home/htnek/Documentos/Projeto de PA/sculptor_3d'
+
+FILES=('/src/Sculptor.cpp' 'main.cpp' )
+
+echo "compilando arquivo ${FILES[0]}..."
+
+#g++ -c src/sculptor.cpp

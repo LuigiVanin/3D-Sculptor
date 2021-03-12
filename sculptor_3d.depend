@@ -1,15 +1,17 @@
 # depslib dependency file v1.0
-1615305783 source:/home/htnek/Documentos/Projeto de PA/sculptor_3d/main.cpp
+1615510602 source:/home/htnek/Documentos/Projeto de PA/sculptor_3d/main.cpp
 	<iostream>
+	<fstream>
 	"Sculptor.h"
 
-1615306870 /home/htnek/Documentos/Projeto de PA/sculptor_3d/include/Sculptor.h
-	"voxel.h"
+1615508921 /home/htnek/Documentos/Projeto de PA/sculptor_3d/include/Sculptor.h
+	"../voxel.h"
 
 1615088707 /home/htnek/Documentos/Projeto de PA/sculptor_3d/voxel.h
 
-1615305564 source:/home/htnek/Documentos/Projeto de PA/sculptor_3d/src/Sculptor.cpp
+1615510547 source:/home/htnek/Documentos/Projeto de PA/sculptor_3d/src/Sculptor.cpp
 	<iostream>
+	<fstream>
 	"Sculptor.h"
 
 1615306803 /home/htnek/Documentos/Projeto de PA/sculptor_3d/include/voxel.h
