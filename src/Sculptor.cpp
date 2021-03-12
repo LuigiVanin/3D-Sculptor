@@ -95,10 +95,46 @@ void Sculptor::writeOFF(char* filename)
             for(int z = 0; z < nz; z++){
                 if(v[x][y][z].isOn == true)
                 {
-                    file << x - side << " " << y + side << " " <<  z - side << "\n" << std::flush;
-                    file << x << " " << y << " " << z << "\n" << std::flush;
-                    file << x << " " << y  << " " << z << "\n" << std::flush;
-                    file << x << " " << y  << " " << z << "\n" << std::flush;
+                    file << x - side << " " << y + side << " " << z - side << "\n" << std::flush;
+                    file << x - side << " " << y - side << " " << z - side << "\n" << std::flush;
+                    file << x + side << " " << y - side << " " << z - side << "\n" << std::flush;
+                    file << x + side << " " << y + side << " " << z - side << "\n" << std::flush;
+                    file << x - side << " " << y + side << " " << z + side << "\n" << std::flush;
+                    file << x - side << " " << y - side << " " << z + side << "\n" << std::flush;
+                    file << x + side << " " << y - side << " " << z + side << "\n" << std::flush;
+                    file << x + side << " " << y + side << " " << z + side << "\n" << std::flush;
+                }
+            }
+        }
+    }
+    total = 0;
+
+    for(int x = 0; x < nx; x++){
+        for(int y = 0; y < ny; y++){
+            for(int z = 0; z < nz; z++){
+                if(v[x][y][z].isOn == true)
+                {
+                    index = total*8;
+                    //1°
+                    file << 4 <<" "<< index + 0 <<" "<< index + 3 <<" "<< index + 2 <<" "<< index + 1 <<std::fixed;
+                    file <<" "<< v[x][y][z].r <<" "<< v[x][y][z].g <<" "<< v[x][y][z].b <<" "<< v[x][y][z].alfa << "\n";
+                    //2°
+                    file << 4 <<" "<< index + 4 <<" "<< index + 5 <<" "<< index + 6 <<" "<< index + 7 <<std::fixed;
+                    file <<" "<< v[x][y][z].r <<" "<< v[x][y][z].g <<" "<< v[x][y][z].b <<" "<< v[x][y][z].alfa << "\n";
+                    //3°
+                    file << 4 <<" "<< index + 0 <<" "<< index + 1 <<" "<< index + 5 <<" "<< index + 4 <<std::fixed;
+                    file <<" "<< v[x][y][z].r <<" "<< v[x][y][z].g <<" "<< v[x][y][z].b <<" "<< v[x][y][z].alfa << "\n";
+                    //4°
+                    file << 4 <<" "<< index + 0 <<" "<< index + 4 <<" "<< index + 7 <<" "<< index + 3 <<std::fixed;
+                    file <<" "<< v[x][y][z].r <<" "<< v[x][y][z].g <<" "<< v[x][y][z].b <<" "<< v[x][y][z].alfa << "\n";
+                    //5°
+                    file << 4 <<" "<< index + 3 <<" "<< index + 7 <<" "<< index + 6 <<" "<< index + 2 <<std::fixed;
+                    file <<" "<< v[x][y][z].r <<" "<< v[x][y][z].g <<" "<< v[x][y][z].b <<" "<< v[x][y][z].alfa << "\n";
+                    //6°
+                    file << 4 <<" "<< index + 1 <<" "<< index + 2 <<" "<< index + 6 <<" "<< index + 5 <<std::fixed;
+                    file <<" "<< v[x][y][z].r <<" "<< v[x][y][z].g <<" "<< v[x][y][z].b <<" "<< v[x][y][z].alfa << "\n";
+
+                    total++;
                 }
             }
         }

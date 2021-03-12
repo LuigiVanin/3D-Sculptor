@@ -1,6 +1,6 @@
 #ifndef SCULPTOR_H
 #define SCULPTOR_H
-#include "../voxel.h"
+#include "voxel.h"
 
 class Sculptor {
 protected:
@@ -9,7 +9,7 @@ protected:
     float r,g,b,alfa; // Current drawing color
 public:
     Voxel ***v;// 3D Matrix on public temporarily for tests
-    float lado;
+    float side;
     float delta;
 
 
