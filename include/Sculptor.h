@@ -24,7 +24,7 @@ public:
     void putBox(int x0, int y0, int z0, int l, int h, int w);
     void cutBox(int x0, int y0, int z0, int l, int h, int w);
     void putDisc(int xcenter, int ycenter, int zcenter, int r, int h, int axis = 1);
-    void cutDisc(int xcenter, int ycenter, int zcenter, int r, int h);
+    void cutDisc(int xcenter, int ycenter, int zcenter, int r, int h, int axis = 1);
     void putSphere(int xcenter, int ycenter, int zcenter, int r);
     void cutSphere(int xcenter, int ycenter, int zcenter, int r);
     void putEllipsoid(int xcenter, int ycenter, int zcenter, int rx, int ry, int rz);

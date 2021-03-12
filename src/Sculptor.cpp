@@ -111,11 +111,22 @@ void Sculptor::putDisc(int xcenter,int ycenter,int zcenter,int r, int h, int axi
     }
 }
 
-void Sculptor::cutDisc(int xcenter,int ycenter,int zcenter,int r, int h){
+void Sculptor::cutDisc(int xcenter,int ycenter,int zcenter,int r, int h, int axis){
     for (int y = ycenter; y < ycenter+ h; y++){
         for(int x = xcenter - r; x < xcenter + r; x++){
             for(int z = zcenter - (round(sqrt(pow(r, 2) - pow(x - xcenter, 2)))); z < zcenter + (round(sqrt(pow(r, 2) - pow(x - xcenter, 2)))); z++ ){
-                Sculptor::cutVoxel(x, y, z );
+                if(axis == 0)
+                {
+                    Sculptor::cutVoxel(y, x, z);
+                }
+                else if(axis == 1)
+                {
+                    Sculptor::cutVoxel(x, y, z);
+                }
+                else if(axis == 2)
+                {
+                    Sculptor::cutVoxel(x, z, y);
+                }
             }
         }
     }
