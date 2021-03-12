@@ -3,7 +3,6 @@ sculptor_3d.layout
 bin/
 obj/
 sculptor_3d.depend
-include/voxel.h
 voxel.h
 to_do.txt
 
