@@ -10,10 +10,9 @@ protected:
 public:
     Voxel ***v;// 3D Matrix on public temporarily for tests
     float side;
-    float delta;
 
 
-    Sculptor(int _nx, int _ny, int _nz);
+    Sculptor(int _nx = 1, int _ny = 1, int _nz = 1);
     ~Sculptor();
 
 
@@ -24,19 +23,18 @@ public:
     void cutVoxel(int x, int y, int z);
     void putBox(int x0, int y0, int z0, int l, int h, int w);
     void cutBox(int x0, int y0, int z0, int l, int h, int w);
-    void putDisc(int xcenter, int ycenter, int zcenter, int r, int h);
+    void putDisc(int xcenter, int ycenter, int zcenter, int r, int h, int axis = 1);
     void cutDisc(int xcenter, int ycenter, int zcenter, int r, int h);
-
     void putSphere(int xcenter, int ycenter, int zcenter, int r);
     void cutSphere(int xcenter, int ycenter, int zcenter, int r);
+    void putEllipsoid(int xcenter, int ycenter, int zcenter, int rx, int ry, int rz);
+    void cutEllipsoid(int xcenter, int ycenter, int zcenter, int rx, int ry, int rz);
+    void writeOFF(char* filename);
     // functions that have yet to be implemented:
 
+    //NONE! :)
 
 
-    //void cutSphere(int xcenter, int ycenter, int zcenter, int radius);
-    //void putEllipsoid(int xcenter, int ycenter, int zcenter, int rx, int ry, int rz);
-    //void cutEllipsoid(int xcenter, int ycenter, int zcenter, int rx, int ry, int rz);
-    void writeOFF(char* filename);
 };
 
 #endif // SCULPTOR_H

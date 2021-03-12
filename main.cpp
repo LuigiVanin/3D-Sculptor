@@ -9,16 +9,16 @@ using namespace std;
 int main()
 {
     //main temporarily for testss
-    Sculptor hat(80, 80, 80);
+    Sculptor hat(50, 50, 50);
 
     cout << "hello world" << endl;
 
-    //hat.setColor(1, 1, 1, 1);
-
     hat.putVoxel(0, 0, 0);
     hat.putVoxel(49, 49,49);
+    //building hat.off
 
-    hat.setColor(0,0.5,0.3,1);
+
+    //hat.setColor(0,0,0,1);
 
     //hat.putDisc(24, 5, 24, 15, 30);
     //hat.putDisc(24, 4,24,21, 1);
@@ -27,10 +27,23 @@ int main()
     //hat.putDisc(24, 5+15,24,15, 6);
 
     //hat.cutDisc(24, 4, 24, 14, 29);
+    // hat.off end
 
-    hat.putSphere(24, 24, 24, 15);
-    hat.cutSphere(20, 20,20,16 );
+    //building odd.off
+    //hat.setColor(1,1,1,1);
+    //hat.putSphere(24, 24, 24, 20);
+    //hat.setColor(0,0,0, 1);
+    //hat.putSphere(24, 24,30, 14 );
+    //hat.putSphere(24, 30,24, 14 );
+    //hat.putSphere(30, 24,24, 14 );
+    //hat.putSphere(24, 18,24, 14 );
+    //hat.putSphere(24, 24,18, 14 );
+    //hat.putSphere(18, 24,24, 14 );
+    //odd.off ending
 
+    hat.setColor(1,1,1,1);
+    //hat.putEllipsoid(24, 24, 24, 20, 10, 10);
+    hat.putDisc(9, 9, 9, 5,10);
 
 
 //    v.putBox(0,0,0, 19, 19, 19);
