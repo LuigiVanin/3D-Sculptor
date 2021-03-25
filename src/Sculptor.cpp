@@ -47,12 +47,8 @@ void Sculptor::setColor(float _r, float _g, float _b, float _alfa){
     alfa = _alfa;
 }
 
-void Sculptor::getColors(){
-    std::cout <<r <<" "<< g<<" " << b<<" "<< alfa <<std::endl;
-}
-
 void Sculptor::putVoxel(int x, int y, int z){
-    if ((x < nx && x >= 0) || (y < ny  && y >= 0) || (z < nz && z >= 0))
+    if ((x < nx && x >= 0) && (y < ny  && y >= 0) && (z < nz && z >= 0))
     {
         v[x][y][z].r = r;
         v[x][y][z].g = g;

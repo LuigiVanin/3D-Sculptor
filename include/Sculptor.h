@@ -7,14 +7,15 @@ protected:
 
     int nx,ny,nz; // Dimensions
     float r,g,b,alfa; // Current drawing color
+
 public:
+
     Voxel ***v;// 3D Matrix on public temporarily for tests
     float side;
 
 
     Sculptor(int _nx = 1, int _ny = 1, int _nz = 1);
     ~Sculptor();
-
 
     void alocaMemoria();
     void setColor(float r_, float g_, float b_, float alpha_);
@@ -30,10 +31,6 @@ public:
     void putEllipsoid(int xcenter, int ycenter, int zcenter, int rx, int ry, int rz);
     void cutEllipsoid(int xcenter, int ycenter, int zcenter, int rx, int ry, int rz);
     void writeOFF(char* filename);
-    // functions that have yet to be implemented:
-
-    //NONE! :)
-
 
 };
 
