@@ -82,3 +82,9 @@ public:
     void writeOFF(char* filename);
 };
 ~~~
+
+#### 3.2. Scripts C++
+
+Os scripts em c++ se resumem na criação da classe "Sculptor" que está no caminho "src/Sculptor.cpp" em que todos os métodos vistos no cabeçalho "include/Sculptor.hpp". Esses métodos de desenho se encarregam de criar formas geométricas a partir de cubos(Voxels). A seguir um breve sumário das funções criadas:
+
+`putVoxel(int x, int y, int z)` : o método modifica os parâmetros da matriz tridimensionais 
