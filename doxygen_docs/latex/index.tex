@@ -1,0 +1,103 @@
+\label{index_md_README}%
+\Hypertarget{index_md_README}%
+ \DoxyHorRuler{0}
+\hypertarget{index_autotoc_md2}{}\doxysubsection{1. Introdução}\label{index_autotoc_md2}
+Esse projeto consiste na criação de um escultor 3D interativo que gera figuras baseadas em cubos, criando sólidos similares a algo visto no jogo {\itshape minecraft}. O código desse projeto é desenvolvido inteiramenta em {\bfseries{C++}} utilizarando primariamente o estilo de programação orientado a objeto(\+POO). 
+
+Além da linguagem de programação C++, outras ferramentas para a vizualização das figuras geradas devem ser utilizadas, as recomendações são o {\bfseries{geomview}} ou {\bfseries{meshlab}}. Os softwares previamente citados foram escolhidos, pois possuem a capacidade de ler e representar arquivos do tipo {\bfseries{.OFF}} que é o tipo de arquivo utilizado para se armazenar os sólidos feitos pelo programa em C++.
+
+O tipo de arquivo .OFF é muito importante para esse projeto, pois ele é um arquivo que pode ser escrito de uma forma padronizada de maneira a ser possível a se denhar um solido 3D.
+
+~\newline
+
+
+O desenvolvimento desse projeto consistirá em duas etapas, sendo elas\+:
+
+
+\begin{DoxyItemize}
+\item {\bfseries{ETAPA 1}} -\/ desenvolvimento das ferramentas de desenho 3D.
+\item {\bfseries{ETAPA 2}} -\/ Criação de uma ferramenta interativa.
+\end{DoxyItemize}\hypertarget{index_autotoc_md3}{}\doxysubsection{2. Estrutura}\label{index_autotoc_md3}
+O código é fragmentado em dois diretórios principais e um código \char`\"{}main.\+cpp\char`\"{}. Os diretótios são responsáveis por armazenas os cabeçalhos e classes C++. No main podemos utilizar os recursos dos diretorios \char`\"{}include\char`\"{} e \char`\"{}src\char`\"{} que são as duas pastas principais. Os diretórios utilizados são os seguintes\+: 
+
+
+\begin{DoxyItemize}
+\item {\bfseries{include}} -\/ retém os cabaçalhos(.hpp) da classe \mbox{\hyperlink{classSculptor}{Sculptor}} e do Struct \mbox{\hyperlink{structVoxel}{Voxel}}. A classe \mbox{\hyperlink{classSculptor}{Sculptor}} é definido no arquivo \mbox{\hyperlink{Sculptor_8cpp}{Sculptor.\+cpp}}.
+\item {\bfseries{src}} -\/ possui o código da lógica e implementação da classe \mbox{\hyperlink{classSculptor}{Sculptor}}.
+\end{DoxyItemize}
+
+{\itshape OBS.\+: vale salientar o diretório \char`\"{}models\char`\"{} que retém as figuras 3D geradas.}\hypertarget{index_autotoc_md4}{}\doxysubsection{3. Código}\label{index_autotoc_md4}
+\hypertarget{index_autotoc_md5}{}\doxysubsubsection{3.\+1. Cabeçalhos}\label{index_autotoc_md5}
+O escultor 3D será, basicamente, uma matriz tridimensional a qual cada um de seus espaços contém um objeto do tipo \char`\"{}\+Voxel\char`\"{} que é uma representação de uma unidade de epaço 3D similar ao pixel no espaço 2D. A struct respectiva ao \mbox{\hyperlink{structVoxel}{Voxel}} possui os atributos de cor RGB dados na forma de float e uma booleana que diz se o respectivo voxel está sólido ou não. Abaixo o código para o voxel\+: 
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keyword}{struct }\mbox{\hyperlink{structVoxel}{Voxel}} \{}
+\DoxyCodeLine{  \textcolor{keywordtype}{float} \mbox{\hyperlink{structVoxel_a06872ec79b836120b551a848968c0f1b}{r}},\mbox{\hyperlink{structVoxel_a27c0da1ed2ff430401d23ff171612a73}{g}},\mbox{\hyperlink{structVoxel_a5cd8432b1d7d0fd8b79e0fc7d10373a8}{b}}; \textcolor{comment}{// Cores}}
+\DoxyCodeLine{  \textcolor{keywordtype}{float} a; \textcolor{comment}{// trasparência}}
+\DoxyCodeLine{}
+\DoxyCodeLine{  \textcolor{keywordtype}{bool} \mbox{\hyperlink{structVoxel_a6fbe8bd53f64685ac4210726d40fc775}{isOn}}; \textcolor{comment}{// solidez do voxel}}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+
+
+Além da estrutura do voxels temos também a classe \mbox{\hyperlink{classSculptor}{Sculptor}} que é responsável por construir o nossos canvas de desenhos e de criar as nossas figuras. Na Nessa classe teremos um atributo que será repectivo ao campo de desenho, sendo esse atributo uma matriz 3D do tipo \mbox{\hyperlink{structVoxel}{Voxel}}. Além de atributos, temos métodos que tem o trabalho de desenhar formas geométricas, métodos que escolhem a cor do sólido que será desenhado e um método que escreve o arquivo .OFF. A baixo temos o código do cabeçalho da classe \mbox{\hyperlink{classSculptor}{Sculptor}}\+: 
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keyword}{class }\mbox{\hyperlink{classSculptor}{Sculptor}} \{}
+\DoxyCodeLine{\textcolor{keyword}{protected}:}
+\DoxyCodeLine{}
+\DoxyCodeLine{    \textcolor{keywordtype}{int} \mbox{\hyperlink{classSculptor_ad1e32f9042538419a3bc7b376f7813b8}{nx}},\mbox{\hyperlink{classSculptor_a1ce2ff97ec94927928ab3f5ec4ba6761}{ny}},\mbox{\hyperlink{classSculptor_a33204e7df26a7ee4c7192381a24335d3}{nz}}; \textcolor{comment}{// Dimensões do canvas}}
+\DoxyCodeLine{    \textcolor{keywordtype}{float} \mbox{\hyperlink{classSculptor_a3f5d2ec3b66d645019b8d81c810a1cd8}{r}},\mbox{\hyperlink{classSculptor_a208c06af69a81a1568df4493868816f1}{g}},\mbox{\hyperlink{classSculptor_a7aafd7305ea634252d8288b60536cd96}{b}},\mbox{\hyperlink{classSculptor_a6bd803edfcf338e178634a3ad4836462}{alfa}}; \textcolor{comment}{// Cores de desenho}}
+\DoxyCodeLine{\textcolor{keyword}{public}:}
+\DoxyCodeLine{    \mbox{\hyperlink{structVoxel}{Voxel}} ***\mbox{\hyperlink{classSculptor_a4ca53a2f2fbf41ca42dfe729ebe693f1}{v}};\textcolor{comment}{// Matriz 3D de voxels}}
+\DoxyCodeLine{}
+\DoxyCodeLine{    \mbox{\hyperlink{classSculptor_a58c1d483677d81657acae69e0972e55b}{Sculptor}}(\textcolor{keywordtype}{int} \_nx = 1, \textcolor{keywordtype}{int} \_ny = 1, \textcolor{keywordtype}{int} \_nz = 1);}
+\DoxyCodeLine{    \mbox{\hyperlink{classSculptor_a8f159bf97458326f16d2e238e11be7ff}{\string~Sculptor}}();}
+\DoxyCodeLine{}
+\DoxyCodeLine{    \textcolor{keywordtype}{void} \mbox{\hyperlink{classSculptor_a27d8839f396e2fd6293ef1292aeb29e3}{alocaMemoria}}();}
+\DoxyCodeLine{}
+\DoxyCodeLine{    \textcolor{keywordtype}{void} \mbox{\hyperlink{classSculptor_a1ab2e8345496f5819e89573196c29b63}{setColor}}(\textcolor{keywordtype}{float} r\_, \textcolor{keywordtype}{float} g\_, \textcolor{keywordtype}{float} b\_, \textcolor{keywordtype}{float} alpha\_);}
+\DoxyCodeLine{}
+\DoxyCodeLine{    \textcolor{comment}{// Métodos de desenho}}
+\DoxyCodeLine{    \textcolor{keywordtype}{void} \mbox{\hyperlink{classSculptor_a4bdea3048b419d58e93074060eaa7b52}{putVoxel}}(\textcolor{keywordtype}{int} x, \textcolor{keywordtype}{int} y, \textcolor{keywordtype}{int} z);}
+\DoxyCodeLine{    \textcolor{keywordtype}{void} \mbox{\hyperlink{classSculptor_ad9d714a35fc8ae16d06eb5df37c3493c}{cutVoxel}}(\textcolor{keywordtype}{int} x, \textcolor{keywordtype}{int} y, \textcolor{keywordtype}{int} z);}
+\DoxyCodeLine{    \textcolor{keywordtype}{void} \mbox{\hyperlink{classSculptor_a147819b71b7a8904ac311842a964dbb3}{putBox}}(\textcolor{keywordtype}{int} x0, \textcolor{keywordtype}{int} y0, \textcolor{keywordtype}{int} z0, \textcolor{keywordtype}{int} l, \textcolor{keywordtype}{int} h, \textcolor{keywordtype}{int} w);}
+\DoxyCodeLine{    \textcolor{keywordtype}{void} \mbox{\hyperlink{classSculptor_a3717a3336c89700babf598b77531fee0}{cutBox}}(\textcolor{keywordtype}{int} x0, \textcolor{keywordtype}{int} y0, \textcolor{keywordtype}{int} z0, \textcolor{keywordtype}{int} l, \textcolor{keywordtype}{int} h, \textcolor{keywordtype}{int} w);}
+\DoxyCodeLine{    \textcolor{keywordtype}{void} \mbox{\hyperlink{classSculptor_ac9e6d5e1fca0f5a06f4eb9640d3cd784}{putDisc}}(\textcolor{keywordtype}{int} xcenter, \textcolor{keywordtype}{int} ycenter, \textcolor{keywordtype}{int} zcenter, \textcolor{keywordtype}{int} \mbox{\hyperlink{classSculptor_a3f5d2ec3b66d645019b8d81c810a1cd8}{r}}, \textcolor{keywordtype}{int} h, \textcolor{keywordtype}{int} axis = 1);}
+\DoxyCodeLine{    \textcolor{keywordtype}{void} \mbox{\hyperlink{classSculptor_a7d0045b4f76acf93e366dea9ec38fe07}{cutDisc}}(\textcolor{keywordtype}{int} xcenter, \textcolor{keywordtype}{int} ycenter, \textcolor{keywordtype}{int} zcenter, \textcolor{keywordtype}{int} \mbox{\hyperlink{classSculptor_a3f5d2ec3b66d645019b8d81c810a1cd8}{r}}, \textcolor{keywordtype}{int} h, \textcolor{keywordtype}{int} axis = 1);}
+\DoxyCodeLine{    \textcolor{keywordtype}{void} \mbox{\hyperlink{classSculptor_a9ec30fa7287957c745fa9a97f1eb7ff2}{putSphere}}(\textcolor{keywordtype}{int} xcenter, \textcolor{keywordtype}{int} ycenter, \textcolor{keywordtype}{int} zcenter, \textcolor{keywordtype}{int} \mbox{\hyperlink{classSculptor_a3f5d2ec3b66d645019b8d81c810a1cd8}{r}});}
+\DoxyCodeLine{    \textcolor{keywordtype}{void} \mbox{\hyperlink{classSculptor_a66059454187c775e272821990dbf3683}{cutSphere}}(\textcolor{keywordtype}{int} xcenter, \textcolor{keywordtype}{int} ycenter, \textcolor{keywordtype}{int} zcenter, \textcolor{keywordtype}{int} \mbox{\hyperlink{classSculptor_a3f5d2ec3b66d645019b8d81c810a1cd8}{r}});}
+\DoxyCodeLine{    \textcolor{keywordtype}{void} \mbox{\hyperlink{classSculptor_a093615b0c2b9b3a17a56300b9b939f39}{putEllipsoid}}(\textcolor{keywordtype}{int} xcenter, \textcolor{keywordtype}{int} ycenter, \textcolor{keywordtype}{int} zcenter, \textcolor{keywordtype}{int} rx, \textcolor{keywordtype}{int} ry, \textcolor{keywordtype}{int} rz);}
+\DoxyCodeLine{    \textcolor{keywordtype}{void} \mbox{\hyperlink{classSculptor_a19c198a83b4cbc500d8930678c190eaa}{cutEllipsoid}}(\textcolor{keywordtype}{int} xcenter, \textcolor{keywordtype}{int} ycenter, \textcolor{keywordtype}{int} zcenter, \textcolor{keywordtype}{int} rx, \textcolor{keywordtype}{int} ry, \textcolor{keywordtype}{int} rz);}
+\DoxyCodeLine{}
+\DoxyCodeLine{    \textcolor{comment}{//Método que escreve o arquivo OFF de acordo com a matriz v}}
+\DoxyCodeLine{    \textcolor{keywordtype}{void} \mbox{\hyperlink{classSculptor_aa8ed61fc7cae10c4d7a895330fe5e309}{writeOFF}}(\textcolor{keywordtype}{char}* filename);}
+\DoxyCodeLine{\};}
+
+\end{DoxyCode}
+\hypertarget{index_autotoc_md6}{}\doxysubsubsection{3.\+2. Scripts C++}\label{index_autotoc_md6}
+Os scripts em c++ se resumem na criação da classe \char`\"{}\+Sculptor\char`\"{} que está no caminho \char`\"{}src/\+Sculptor.\+cpp\char`\"{} em que todos os métodos vistos no cabeçalho \char`\"{}include/\+Sculptor.\+hpp\char`\"{}. Esses métodos de desenho se encarregam de criar formas geométricas a partir de cubos(\+Voxels). A seguir um breve sumário das funções criadas\+: 
+
+
+\begin{DoxyEnumerate}
+\item {\ttfamily put\+Voxel(int x, int y, int z)} ~\newline
+
+\item {\ttfamily cut\+Voxel(int x, int y, int z)} ~\newline
+
+\item {\ttfamily void put\+Box(int x0, int y0, int z0, int l, int h, int w)} ~\newline
+
+\item {\ttfamily void cut\+Box(int x0, int y0, int z0, int l, int h, int w)} ~\newline
+
+\item {\ttfamily void put\+Sphere(int x0, int y0, int z0, int r)} ~\newline
+
+\item {\ttfamily void cut\+Sphere(int x0, int y0, int z0, int r)} ~\newline
+
+\item {\ttfamily void put\+Ellipse(int x0, int y0, int z0, int rx, int ry, int rz)} ~\newline
+
+\item {\ttfamily void cut\+Ellipse(int x0, int y0, int z0, int rx, int ry, int rz)} ~\newline
+
+\end{DoxyEnumerate}\hypertarget{index_autotoc_md7}{}\doxysubsection{4. Como usar}\label{index_autotoc_md7}
+aguardando desenvolvimento da {\bfseries{etapa 2}} 

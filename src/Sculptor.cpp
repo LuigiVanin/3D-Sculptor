@@ -60,7 +60,7 @@ void Sculptor::putVoxel(int x, int y, int z){
 
 void Sculptor::cutVoxel(int x, int y, int z)
 {
-    if ((x < nx && x >= 0) || (y < ny  && y >= 0)|| (z < nz && z >= 0))
+    if ((x < nx && x >= 0) && (y < ny  && y >= 0) && (z < nz && z >= 0))
     {
         v[x][y][z].isOn = false;
     }

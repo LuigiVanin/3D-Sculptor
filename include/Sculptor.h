@@ -7,12 +7,10 @@ protected:
 
     int nx,ny,nz; // Dimensions
     float r,g,b,alfa; // Current drawing color
-
-public:
-
     Voxel ***v;// 3D Matrix on public temporarily for tests
     float side;
 
+public:
 
     Sculptor(int _nx = 1, int _ny = 1, int _nz = 1);
     ~Sculptor();
