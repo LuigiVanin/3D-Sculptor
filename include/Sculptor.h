@@ -16,6 +16,7 @@ public:
     ~Sculptor();
 
     void alocaMemoria();
+    void limpaVoxels();
     void setColor(float r_, float g_, float b_, float alpha_);
     void getColors();
     void putVoxel(int x, int y, int z);

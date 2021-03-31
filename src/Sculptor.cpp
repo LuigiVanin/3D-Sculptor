@@ -2,6 +2,7 @@
 #include <fstream>
 #include <cmath>
 #include "Sculptor.h"
+#include <queue>
 
 Sculptor::Sculptor(int _nx, int _ny, int _nz)
 {
@@ -12,10 +13,11 @@ Sculptor::Sculptor(int _nx, int _ny, int _nz)
 }
 
 Sculptor:: ~Sculptor(){
-
+    std::cout<< "\nFIM DO SCULPTOR\n";
 }
 
-void Sculptor::alocaMemoria(){
+void Sculptor::alocaMemoria()
+{
     v = new Voxel**[nx];
 
     for (int x = 0; x < nx; x++){
@@ -37,7 +39,37 @@ void Sculptor::alocaMemoria(){
             }
         }
     }
-    std :: cout << "memória alocada para a matriz\n";
+    std :: cout << "\nmemória alocada para a matriz\n";
+}
+
+void Sculptor::limpaVoxels(void)
+{
+    std::queue<int> q;
+    int lx,ly,lz;
+    for(int x=1; x<nx-1; x++){
+        for(int y=1; y<ny-1; y++){
+            for(int z=1; z<nz-1; z++){
+                if((v[x][y][z].isOn == true) &&
+                (v[x+1][y][z].isOn == true) &&
+                (v[x-1][y][z].isOn == true) &&
+                (v[x][y+1][z].isOn == true) &&
+                (v[x][y-1][z].isOn == true) &&
+                (v[x][y][z+1].isOn == true) &&
+                (v[x][y][z-1].isOn == true)){
+                    q.push(x);
+                    q.push(y);
+                    q.push(z);
+                }
+            }
+        }
+    }
+    while(!q.empty()){
+        lx=q.front(); q.pop();
+        ly=q.front(); q.pop();
+        lz=q.front(); q.pop();
+        v[lx][ly][lz].isOn = false;
+    }
+    std::cout<< "\nVoxel varridos e limpados\n" << std::endl;
 }
 
 void Sculptor::setColor(float _r, float _g, float _b, float _alfa){
@@ -178,6 +210,8 @@ void Sculptor::cutEllipsoid(int xcenter, int ycenter, int zcenter, int rx,int ry
 
 void Sculptor::writeOFF(char* filename)
 {
+    Sculptor::limpaVoxels();
+
     std::cout<<"opening file " << filename <<"...\n\n";
     int index = 0, total = 0;
     std :: ofstream file;
