@@ -4,5 +4,5 @@ bin/
 obj/
 sculptor_3d.depend
 voxel.h
-to_do.txt
+src/GeometricFigure.cpp
 

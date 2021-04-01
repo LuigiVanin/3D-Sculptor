@@ -13,7 +13,7 @@ Sculptor::Sculptor(int _nx, int _ny, int _nz)
 }
 
 Sculptor:: ~Sculptor(){
-    std::cout<< "\nFIM DO SCULPTOR\n";
+    std::cout<< "\-nSCULPTOR FINISHED-\n";
 }
 
 void Sculptor::alocaMemoria()
