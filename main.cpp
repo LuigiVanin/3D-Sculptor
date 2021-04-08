@@ -8,6 +8,7 @@
 #include "PutSphere.h"
 #include "CutSphere.h"
 #include "PutEllipsoid.h"
+#include "CutEllipsoid.h"
 
 using namespace std;
 
@@ -26,6 +27,7 @@ int main()
     PutSphere ps(35, 35, 35, 10, 1, 0, 0, 0);
     CutSphere cs(40, 40, 40, 10);
     PutEllipsoid e(10, 10, 35, 15, 10, 10, 0, 0, 1, 0);
+    CutEllipsoid ce(10, 10, 30, 15, 10, 10);
 
     p.draw(sculpture);
     c.draw(sculpture);
@@ -34,8 +36,7 @@ int main()
     ps.draw(sculpture);
     cs.draw(sculpture);
     e.draw(sculpture);
-
-    //sculpture.putSphere(24, 24, 0, 35);
+    ce.draw(sculpture);
 
     sculpture.writeOFF((char*) "models/test.off");
     return 0;
