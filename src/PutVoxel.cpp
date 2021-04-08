@@ -10,10 +10,6 @@ PutVoxel::PutVoxel(int x, int y, int z, float r, float g, float b, float alfa)
     this->g = g;
     this->b = b;
     this->alfa = alfa;
-    //std::cout<< "\nteste construtor\n";
-}
-PutVoxel::~PutVoxel()
-{
 }
 
 void PutVoxel::draw(Sculptor &s)

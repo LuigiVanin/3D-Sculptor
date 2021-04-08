@@ -8,7 +8,7 @@ private:
 
 public:
     PutVoxel(int x, int y, int z, float r, float g, float b, float alfa);
-    ~PutVoxel();
+    ~PutVoxel(){}
 
     void draw(Sculptor &s);
 };
