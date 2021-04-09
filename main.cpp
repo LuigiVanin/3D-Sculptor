@@ -5,8 +5,6 @@
 #include "GeometricFigure.h"
 #include "Interpreter.h"
 
-using namespace std;
-
 int main()
 {
     Sculptor *model;
