@@ -16,7 +16,7 @@ PutEllipsoid::PutEllipsoid(int xc, int yc, int zc, int xr, int yr, int zr, float
 }
 
 void PutEllipsoid::draw(Sculptor &s){
-    std::cout<< "\nteste draw Ellipsoid\n";
+    std::cout<< "  > draw Ellipsoid at (" <<xc<<", "<<yc<<", "<<zc<<")\n";
     s.setColor(r, g, b, alfa);
     s.putEllipsoid(xc, yc, zc, xr, yr, zr);
 }

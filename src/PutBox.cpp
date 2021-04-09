@@ -15,7 +15,7 @@ PutBox::PutBox(int x0, int y0, int z0, int length, int height, int width, float 
 }
 
 void PutBox::draw(Sculptor &s){
-    std::cout<< "\nteste draw Box\n";
+    std::cout<< "  > draw Box at (" <<x0<<", "<<y0<<", "<<z0<<")\n";
     s.setColor(r, g, b, alfa);
     s.putBox(x0, y0, z0, length, height, width);
 }

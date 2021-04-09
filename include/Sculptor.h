@@ -1,6 +1,7 @@
 #ifndef SCULPTOR_H
 #define SCULPTOR_H
 #include "voxel.h"
+#include <string>
 
 class Sculptor {
 protected:
@@ -29,7 +30,7 @@ public:
     void cutSphere(int xcenter, int ycenter, int zcenter, int r);
     void putEllipsoid(int xcenter, int ycenter, int zcenter, int rx, int ry, int rz);
     void cutEllipsoid(int xcenter, int ycenter, int zcenter, int rx, int ry, int rz);
-    void writeOFF(char* filename);
+    void writeOFF(std::string filename);
 
 };
 

@@ -14,7 +14,7 @@ PutSphere::PutSphere(int xc, int yc, int zc, int radius, float r, float g, float
 }
 
 void PutSphere::draw(Sculptor &s){
-    std::cout<< "\nteste draw Sphere\n";
+    std::cout<< "  > draw Sphere at (" <<xc<<", "<<yc<<", "<<zc<<")\n";;
     s.setColor(r, g, b, alfa);
     s.putSphere(xc, yc, zc, radius);
 }

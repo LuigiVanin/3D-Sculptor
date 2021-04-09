@@ -14,7 +14,7 @@ PutVoxel::PutVoxel(int x, int y, int z, float r, float g, float b, float alfa)
 
 void PutVoxel::draw(Sculptor &s)
 {
-    std::cout<< "\nteste draw\n";
+    std::cout<< "  > draw Voxel at (" <<x<<", "<<y<<", "<<z<<")\n";
     s.setColor(r, g, b, alfa);
     s.putVoxel(x, y, z);
 }

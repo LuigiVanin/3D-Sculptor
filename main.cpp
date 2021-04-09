@@ -1,43 +1,41 @@
 #include <iostream>
 #include <cstdlib>
 #include "Sculptor.h"
-#include "PutVoxel.h"
-#include "CutVoxel.h"
-#include "PutBox.h"
-#include "CutBox.h"
-#include "PutSphere.h"
-#include "CutSphere.h"
-#include "PutEllipsoid.h"
-#include "CutEllipsoid.h"
+#include <vector>
+#include "GeometricFigure.h"
+#include "Interpreter.h"
 
 using namespace std;
 
 int main()
 {
     //main temporarily for testss
-    Sculptor sculpture(50, 50, 50);
+    //Sculptor sculpture(50, 50, 50);
+    Sculptor *model;
 
-    sculpture.putVoxel(0, 0, 0);
-    sculpture.putVoxel(49, 49,49);
+    Interpreter Inter;
 
-    PutVoxel p(20, 20, 20, 0, 1, 0, 0);
-    CutVoxel c(20, 20, 20);
-    PutBox b(5, 5, 5, 10, 10, 10, 0, 1, 0, 0);
-    CutBox cb(5, 5, 5, 5, 5, 5);
-    PutSphere ps(35, 35, 35, 10, 1, 0, 0, 0);
-    CutSphere cs(40, 40, 40, 10);
-    PutEllipsoid e(10, 10, 35, 15, 10, 10, 0, 0, 1, 0);
-    CutEllipsoid ce(10, 10, 30, 15, 10, 10);
+//    sculpture.putVoxel(0, 0, 0);
+//    sculpture.putVoxel(49, 49,49);
 
-    p.draw(sculpture);
-    c.draw(sculpture);
-    b.draw(sculpture);
-    cb.draw(sculpture);
-    ps.draw(sculpture);
-    cs.draw(sculpture);
-    e.draw(sculpture);
-    ce.draw(sculpture);
+    std::vector<GeometricFigure*> figs;
 
-    sculpture.writeOFF((char*) "models/test.off");
+    figs = Inter.compile("text_scripts/test.txt");
+
+    model = new Sculptor(Inter.getDimX(), Inter.getDimY(), Inter.getDimZ());
+
+    std::cout<<"\nLOG:\n";
+    for (int i = 0; i < (int) figs.size(); i++){
+        figs[i]->draw(*model);
+    }
+    model->putVoxel(Inter.getDimX() - 1, Inter.getDimY() - 1, Inter.getDimZ() - 1);
+    model->putVoxel(0, 0, 0);
+    model->writeOFF("models/script/test.off");
+
+    for(int i = 0; i < (int) figs.size(); i++){
+        delete figs[i];
+    }
+    delete model;
+
     return 0;
 }
