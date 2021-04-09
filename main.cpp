@@ -13,7 +13,7 @@ int main()
 
     std::vector<GeometricFigure*> figs;
 
-    figs = Inter.compile("text_scripts/all.txt");
+    figs = Inter.compile("text_scripts/test.txt");
 
     model = new Sculptor(Inter.getDimX(), Inter.getDimY(), Inter.getDimZ());
 
@@ -22,9 +22,9 @@ int main()
         figs[i]->draw(*model);
     }
 
-    model->putVoxel(Inter.getDimX() - 1, Inter.getDimY() - 1, Inter.getDimZ() - 1);
-    model->putVoxel(0, 0, 0);
-    model->writeOFF("models/script/all.off");
+    //model->putVoxel(Inter.getDimX() - 1, Inter.getDimY() - 1, Inter.getDimZ() - 1);
+    //model->putVoxel(0, 0, 0);
+    model->writeOFF("models/etapa2/test.off");
 
     for(int i = 0; i < (int) figs.size(); i++){
         delete figs[i];
