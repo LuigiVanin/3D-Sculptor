@@ -11,7 +11,7 @@ CutVoxel::CutVoxel(int x, int y, int z)
 
 void CutVoxel::draw(Sculptor &s)
 {
-    std::cout<< "\nteste draw\n";
+    std::cout<< "  > cut Voxel at (" <<x<<", "<<y<<", "<<z<<")\n";
 //    s.setColor(r, g, b, alfa);
     s.cutVoxel(x, y, z);
 }

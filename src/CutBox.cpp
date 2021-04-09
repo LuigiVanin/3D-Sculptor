@@ -16,7 +16,7 @@ CutBox::~CutBox()
 }
 
 void CutBox::draw(Sculptor &s){
-    std::cout<< "\nteste draw cut box\n";
+    std::cout<< "  > cut Box at (" <<x0<<", "<<y0<<", "<<z0<<")\n";
     //s.setColor(r, g, b, alfa);
     s.cutBox(x0, y0, z0, length, height, width);
 }

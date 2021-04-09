@@ -11,6 +11,8 @@
 #include "CutSphere.h"
 #include "PutEllipsoid.h"
 #include "CutEllipsoid.h"
+#include "CutDisc.h"
+#include "PutDisc.h"
 
 Interpreter::Interpreter()
 {
@@ -23,7 +25,7 @@ std::vector<GeometricFigure*> Interpreter::compile(std::string filename)
     std::string keyWord;
     std::string s;
     std::stringstream ss;
-    int x0, y0, z0, l, h, w, xr, yr, yz, radius;
+    int x0, y0, z0, l, h, w, xr, yr, zr, radius, axis;
 
     f.open(filename.c_str());
 
@@ -58,9 +60,51 @@ std::vector<GeometricFigure*> Interpreter::compile(std::string filename)
                     ss >> x0 >> y0 >> z0 >> radius >> r >> g >> b >> alfa;
                     figs.push_back(new PutSphere(x0, y0, z0, radius, r, g, b, alfa));
                 }
+
                 else if(keyWord.compare("putBox") == 0){
                     ss >> x0 >> y0 >> z0 >> l >> h >> w >> r >> g >> b >> alfa;
                     figs.push_back(new PutBox(x0, y0, z0, l, h, w, r, g, b, alfa));
+                }
+
+                else if(keyWord.compare("putEll") == 0){
+                    ss >> x0 >> y0 >> z0 >> xr >> yr >> zr >> r >> g >> b >> alfa;
+                    figs.push_back(new PutEllipsoid(x0, y0, z0, xr, yr, zr, r, g, b, alfa));
+                }
+
+                else if(keyWord.compare("putDisc") == 0){
+                    ss >> x0 >> y0 >> z0 >> radius >> h >> axis >> r >> g >> b >> alfa;
+                    figs.push_back(new PutDisc(x0, y0, z0, radius, h, axis, r, g, b, alfa));
+                }
+
+                else if(keyWord.compare("cutVoxel") == 0){
+                    ss >> x0 >> y0 >> z0;
+                    figs.push_back(new CutVoxel(x0, y0, z0));
+                }
+
+                else if(keyWord.compare("cutSphere") == 0){
+                    ss >> x0 >> y0 >> z0 >> radius;
+                    figs.push_back(new CutSphere(x0, y0, z0, radius));
+                }
+
+                else if(keyWord.compare("cutBox") == 0){
+                    ss >> x0 >> y0 >> z0 >> l >> h >> w;
+                    figs.push_back(new CutBox(x0, y0, z0, l, h, w));
+                }
+
+                else if(keyWord.compare("cutEll") == 0){
+                    ss >> x0 >> y0 >> z0 >> xr >> yr >> zr;
+                    figs.push_back(new CutEllipsoid(x0, y0, z0, xr, yr, zr));
+                }
+
+                else if(keyWord.compare("cutDisc") == 0){
+                    ss >> x0 >> y0 >> z0 >> radius >> h >> axis;
+                    figs.push_back(new CutDisc(x0, y0, z0, radius, h, axis));
+                }
+
+                else {
+                    f.close();
+                    std::cout <<"\nKeyWord" << keyWord << "not defined\n";
+                    exit(1);
                 }
             }
         }

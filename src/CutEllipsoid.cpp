@@ -13,7 +13,7 @@ CutEllipsoid::CutEllipsoid(int xc, int yc, int zc, int xr, int yr, int zr)
 
 void CutEllipsoid::draw(Sculptor &s)
 {
-    std::cout<< "\nteste draw cut Ellipsoid\n";
+    std::cout<< "  > cut Ellipsoid at (" <<xc<<", "<<yc<<", "<<zc<<")\n";
     s.cutEllipsoid(xc, yc, zc, xr, yr, zr);
 }
 

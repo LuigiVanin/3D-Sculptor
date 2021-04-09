@@ -9,14 +9,9 @@ using namespace std;
 
 int main()
 {
-    //main temporarily for testss
-    //Sculptor sculpture(50, 50, 50);
     Sculptor *model;
 
     Interpreter Inter;
-
-//    sculpture.putVoxel(0, 0, 0);
-//    sculpture.putVoxel(49, 49,49);
 
     std::vector<GeometricFigure*> figs;
 
@@ -28,6 +23,7 @@ int main()
     for (int i = 0; i < (int) figs.size(); i++){
         figs[i]->draw(*model);
     }
+
     model->putVoxel(Inter.getDimX() - 1, Inter.getDimY() - 1, Inter.getDimZ() - 1);
     model->putVoxel(0, 0, 0);
     model->writeOFF("models/script/test.off");

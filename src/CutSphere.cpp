@@ -10,7 +10,7 @@ CutSphere::CutSphere(int xc, int yc, int zc, int radius)
 }
 
 void CutSphere::draw(Sculptor &s){
-    std::cout<< "\nteste draw cut Sphere\n";
+    std::cout<< "  > cut Sphere at (" <<xc<<", "<<yc<<", "<<zc<<")\n";
     s.setColor(r, g, b, alfa);
     s.cutSphere(xc, yc, zc, radius);
 }
