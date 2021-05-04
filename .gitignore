@@ -6,5 +6,5 @@ sculptor_3d.depend
 voxel.h
 src/GeometricFigure.cpp
 dconfig
-doxigen_docs/
+doxygen_docs/
 
