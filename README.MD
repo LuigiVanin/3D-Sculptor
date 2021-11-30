@@ -23,7 +23,7 @@ O tipo de arquivo .OFF é muito importante para esse projeto, pois ele é um arq
 O desenvolvimento desse projeto consistirá em duas etapas, sendo elas:
 
 - **ETAPA 1** - desenvolvimento das ferramentas de desenho 3D.
-- **ETAPA 2** - Criação de uma ferramenta interativa.
+- **ETAPA 2** - Criação de um meio interativa (linguagem que gera formas geométricas. exemplos em '/text_scripts/').
 
 ### 2. Estrutura
 
@@ -35,6 +35,9 @@ O código é fragmentado em dois diretórios principais e um código "main.cpp".
 
 - **src** - possui o código da lógica e implementação da classe Sculptor.
 
+- **models** - pasta para armazenar os modelos .off gerados pelo programa.
+
+- **text_scripts** - pasta referente aos scripts para a construção de modelos 3d.
 *OBS.: vale salientar o diretório "models" que retém as figuras 3D geradas.*
 
 ### 3. Código
