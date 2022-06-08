@@ -13,7 +13,7 @@ int main()
 
     std::vector<GeometricFigure*> figs;
 
-    figs = Inter.compile("text_scripts/test.txt");
+    figs = Inter.compile("scripts/test.txt");
 
     model = new Sculptor(Inter.getDimX(), Inter.getDimY(), Inter.getDimZ());
 
@@ -31,5 +31,6 @@ int main()
     }
     delete model;
 
+    return 0;
     return 0;
 }

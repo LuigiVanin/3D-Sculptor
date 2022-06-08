@@ -7,4 +7,6 @@ voxel.h
 src/GeometricFigure.cpp
 dconfig
 doxygen_docs/
+.idea/
+cmake-build-debug/
 
