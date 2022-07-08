@@ -38,15 +38,47 @@ O código é fragmentado em dois diretórios principais e um código "main.cpp".
 -   Git
 -   GCC ~> 9.4.0
 -   CMake ~> 3.16.3
+-   Geomview
 -   Ubuntu
 
 _OBS.:_ **O código pode facilmente rodar em outros sistemas**, porém só testei em meu ambiente, logo, não posso garantir nenhuma compatibilidade
 
 ## Como baixar e rodar 🚀
 
+Para baixar o projeto há a opção de utilizar o `git clone` ou baixando diretamente do github.
+
+```bash
+> git clone https://github.com/LuigiVanin/3D-Sculptor.git
+```
+
+Após o projeto baixado é necessário usar o cmake para construir o projeto. Após isso usaremos o comando do makefile, `make` para compilar o projeto. O projeto com essas configurações será construido na raiz do diretório, caso deseje monta-lo em outro caminho basta mudar as configurações do CMake.
+
+```bash
+> cmake .
+> make
+```
+
+Agora basta rodar o execitável gerado usando como parâmetros o caminho do script de geração de modelo e seguido do arquivo destino do arquivo .off. OBS.: O arquivo de destino deve terminar sempre com a extenção .off.
+
+```bash
+> 3D_Sculptor <script-path> <model-dest>
+```
+
+Finalmente, para visualizar a figura se utiliza a ferramenta do geomview ou meshlab seguido do arquivo .off gerado.
+
+```bash
+> geomview <model-dest>
+```
+
 <p align="center">
-  <img src= "./assets/execute.gif" height = "450px">
+  <img src= "./assets/execute.gif" width = "550px">
 </p>
+
+No exemplo acima o seguintes parâmetro foram usados:
+
+```bash
+> ./3D_Sculptor scripts/marvin.txt models/marvin.off
+```
 
 ## Como funciona ❓
 

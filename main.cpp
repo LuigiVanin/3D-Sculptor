@@ -8,7 +8,7 @@
 int main(int argc, char* argv[])
 {
     std::string path_script(argc > 1 ? argv[1] : "scripts/test.txt");
-    std::string path_model(argc > 2 ? argv[2] : "models/test.off");
+    std::string path_model(argc > 2 ? argv[2] : "./model.off");
     
     Interpreter Inter;
     std::vector<GeometricFigure*> figs;
