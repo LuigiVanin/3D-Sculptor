@@ -1,11 +1,9 @@
 # Escultor 3D em C++
 
---- 
-
-### 1. Introdução
+## Descrição 📎
 
 <p align = "justify">
-Esse projeto consiste na criação de um escultor 3D interativo que gera figuras baseadas em cubos, criando sólidos similares a algo visto no jogo *minecraft*. O código desse projeto é desenvolvido inteiramenta em <b>C++</b> utilizarando primariamente o estilo de programação orientado a objeto(POO).
+Esse projeto consiste na criação de um escultor 3D interativo que gera figuras baseadas em cubos, criando sólidos similares a algo visto no jogo *minecraft*. O código desse projeto é desenvolvido inteiramenta em <b>C++</b> utilizarando primariamente o estilo de programação orientado a objeto(POO). O projeto desenvolveu uma lingua simples para criação de sólidos, pode ser visto na pasta <a href="https://github.com/LuigiVanin/3D-Sculptor/tree/main/scripts">./scripts/</a>.
 <p>
 
 <p align = "justify">
@@ -20,48 +18,58 @@ O tipo de arquivo .OFF é muito importante para esse projeto, pois ele é um arq
   <img src= "./assets/ezgif.com-gif-maker.gif" height = 350/ width = 350>
 </p>
 
-O desenvolvimento desse projeto consistirá em duas etapas, sendo elas:
-
-- **ETAPA 1** - desenvolvimento das ferramentas de desenho 3D.
-- **ETAPA 2** - Criação de um meio interativa (linguagem que gera formas geométricas. exemplos em '/text_scripts/').
-
-### 2. Estrutura
+## Estrutura 📦
 
 <p align = "justify">
 O código é fragmentado em dois diretórios principais e um código "main.cpp". Os diretótios são responsáveis por armazenas os cabeçalhos e classes C++. No main podemos utilizar os recursos dos diretorios "include" e "src" que são as duas pastas principais. Os diretórios utilizados são os seguintes:
 <p>
 
-- **include** - retém os cabaçalhos(.hpp) da classe Sculptor e do Struct Voxel. A classe Sculptor é definido no arquivo Sculptor.cpp.
+-   **include** - retém os cabaçalhos(.hpp) da classe Sculptor e do Struct Voxel. A classe Sculptor é definido no arquivo Sculptor.cpp.
 
-- **src** - possui o código da lógica e implementação da classe Sculptor.
+-   **src** - possui o código da lógica e implementação da classe Sculptor.
 
-- **models** - pasta para armazenar os modelos .off gerados pelo programa.
+-   **models** - pasta para armazenar os modelos .off gerados pelo programa.
 
-- **text_scripts** - pasta referente aos scripts para a construção de modelos 3d.
-*OBS.: vale salientar o diretório "models" que retém as figuras 3D geradas.*
+-   **scripts** - pasta referente aos scripts para a construção de modelos 3d.
+    _OBS.: vale salientar o diretório "models" que retém as figuras 3D geradas._
 
-### 3. Código
+## Requisitos ❗
 
+-   Git
+-   GCC ~> 9.4.0
+-   CMake ~> 3.16.3
+-   Ubuntu
 
-#### 3.1. Cabeçalhos
+_OBS.:_ **O código pode facilmente rodar em outros sistemas**, porém só testei em meu ambiente, logo, não posso garantir nenhuma compatibilidade
+
+## Como baixar e rodar 🚀
+
+<p align="center">
+  <img src= "./assets/execute.gif" height = "450px">
+</p>
+
+## Como funciona ❓
+
+#### - Cabeçalhos
+
 <p align = "justify">
  O escultor 3D será, basicamente, uma matriz tridimensional a qual cada um de seus espaços contém um objeto do tipo "Voxel" que é uma representação de uma unidade de epaço 3D similar ao pixel no espaço 2D. A struct respectiva ao Voxel possui os atributos de cor RGB dados na forma de float e uma booleana que diz se o respectivo voxel está sólido ou não. Abaixo o código para o voxel:
  </p>
 
-~~~cpp
+```cpp
 struct Voxel {
   float r,g,b; // Cores
   float a; // trasparência
 
   bool isOn; // solidez do voxel
 };
-~~~
+```
 
 <p align = "justify">
 Além da estrutura do voxels temos também a classe Sculptor que é responsável por construir o nossos canvas de desenhos e de criar as nossas figuras. Na Nessa classe teremos um atributo que será repectivo ao campo de desenho, sendo esse atributo uma matriz 3D do tipo Voxel. Além de atributos, temos métodos que tem o trabalho de desenhar formas geométricas, métodos que escolhem a cor do sólido que será desenhado e um método que escreve o arquivo .OFF. A baixo temos o código do cabeçalho da classe Sculptor:
 </p>
 
-~~~cpp
+```cpp
 class Sculptor {
 protected:
 
@@ -92,19 +100,19 @@ public:
     //Método que escreve o arquivo OFF de acordo com a matriz v
     void writeOFF(char* filename);
 };
-~~~
+```
 
-#### 3.2. Scripts C++
+#### - Scripts C++
 
 <p align = "justify">
 Os scripts em c++ se resumem na criação da classe "Sculptor" que está no caminho "src/Sculptor.cpp" em que todos os métodos vistos no cabeçalho "include/Sculptor.hpp". Esses métodos de desenho se encarregam de criar formas geométricas a partir de cubos(Voxels). A seguir um breve sumário das funções criadas:
 </p>
 
-1. `putVoxel(int x, int y, int z)` : o método modifica os atributos dos voxels da matriz tridimensional `v`(atributo da classe Sculptor analoga a posição no espaço de desenho). O método modifica o valor de `v[x][y][z]`, mudando seus atributos **rgba** e mudando o atributo **isOn** para ***true***, tornando o voxel da posição x, y e z como sólido. *Possui o retorno vazio*(void).
+1. `putVoxel(int x, int y, int z)` : o método modifica os atributos dos voxels da matriz tridimensional `v`(atributo da classe Sculptor analoga a posição no espaço de desenho). O método modifica o valor de `v[x][y][z]`, mudando seus atributos **rgba** e mudando o atributo **isOn** para **_true_**, tornando o voxel da posição x, y e z como sólido. _Possui o retorno vazio_(void).
 
 <br>
 
-2. `cutVoxel(int x, int y, int z)` : o método, assim como o anterior, modifica os atributos dos voxels da matriz tridimensional `v`. O método modifica o valor de `v[x][y][z]`, mudando o atributo **isOn** para ***false***, tornando o voxel da posição x, y e z de sólido para invisível(apagando), por isso se chama de "corta voxel". *Possui o retorno vazio*(void).
+2. `cutVoxel(int x, int y, int z)` : o método, assim como o anterior, modifica os atributos dos voxels da matriz tridimensional `v`. O método modifica o valor de `v[x][y][z]`, mudando o atributo **isOn** para **_false_**, tornando o voxel da posição x, y e z de sólido para invisível(apagando), por isso se chama de "corta voxel". _Possui o retorno vazio_(void).
 
 <br>
 
@@ -128,9 +136,4 @@ Os scripts em c++ se resumem na criação da classe "Sculptor" que está no cami
 
 <br>
 
-8. `cutEllipsoid (int xcenter, int ycenter, int zcenter, int rx, int ry, int rz)` : O método **cutEllipsoid** consiste no recorde de voxels no padrão de uma elipisoide(representação 3D de uma ellipse) a partir da função **cutVoxel()**. Para realizar essa tarefa se utiliza a equação do elipsoide de forma computacioanl. Vale salientar que essa elipsoide não é perfeita pois usa como padrão os voxels. O retorno da função é vazio(void). 
-
-
-### 4. Como usar
-
-aguardando desenvolvimento da **etapa 2**
+8. `cutEllipsoid (int xcenter, int ycenter, int zcenter, int rx, int ry, int rz)` : O método **cutEllipsoid** consiste no recorde de voxels no padrão de uma elipisoide(representação 3D de uma ellipse) a partir da função **cutVoxel()**. Para realizar essa tarefa se utiliza a equação do elipsoide de forma computacioanl. Vale salientar que essa elipsoide não é perfeita pois usa como padrão os voxels. O retorno da função é vazio(void).
