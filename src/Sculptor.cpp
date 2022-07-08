@@ -7,7 +7,7 @@
 
 Sculptor::Sculptor(int _nx, int _ny, int _nz)
 {
-    std::cout<< "\n==SCULPTOR INIT==\n\n";
+    std::cout<< "\n\t=== SCULPTOR INIT ===\n";
     nx = _nx, ny = _ny, nz = _nz;
     r = g = b = alfa = 0.5;
     side = 0.5;
@@ -28,7 +28,7 @@ Sculptor:: ~Sculptor()
 
     delete v;
 
-    std::cout<< "\n==SCULPTOR FINISHED==\n";
+    std::cout<< "\t=== SCULPTOR FINISHED ===\n";
 }
 
 void Sculptor::alocaMemoria()
@@ -54,7 +54,6 @@ void Sculptor::alocaMemoria()
             }
         }
     }
-    std :: cout << "\nmatrix memory alocated\n";
 }
 
 void Sculptor::limpaVoxels(void)
@@ -84,7 +83,7 @@ void Sculptor::limpaVoxels(void)
         lz=q.front(); q.pop();
         v[lx][ly][lz].isOn = false;
     }
-    std::cout<< "\nfile optimazed(cleanig non visible Voxels)!\n" << std::endl;
+    std::cout<< "\n> File optimazed(cleanig non visible Voxels)!\n" << std::endl;
 }
 
 void Sculptor::setColor(float _r, float _g, float _b, float _alfa){
@@ -227,7 +226,7 @@ void Sculptor::writeOFF(std::string filename)
 {
     Sculptor::limpaVoxels();
 
-    std::cout<<"trying to open " << filename <<" file... ";
+    std::cout<<"> Trying to open " << filename <<" file... ";
     int index = 0, total = 0;
     std :: ofstream file;
     file.open(filename.c_str());
@@ -304,6 +303,6 @@ void Sculptor::writeOFF(std::string filename)
     }
 
     file.close();
-    std::cout<<filename<<" closed sucesseful!\n\n";
+    std::cout<<"> File \""<<filename<<"\" Closed sucesseful!\n\n";
 }
 

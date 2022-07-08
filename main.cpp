@@ -5,32 +5,26 @@
 #include "GeometricFigure.h"
 #include "Interpreter.h"
 
-int main()
+int main(int argc, char* argv[])
 {
-    Sculptor *model;
-
+    std::string path_script(argc > 1 ? argv[1] : "scripts/test.txt");
+    std::string path_model(argc > 2 ? argv[2] : "models/test.off");
+    
     Interpreter Inter;
-
     std::vector<GeometricFigure*> figs;
-
-    figs = Inter.compile("scripts/test.txt");
-
-    model = new Sculptor(Inter.getDimX(), Inter.getDimY(), Inter.getDimZ());
-
+    figs = Inter.compile(path_script);
+    Sculptor *model = new Sculptor(Inter.getDimX(), Inter.getDimY(), Inter.getDimZ());
     std::cout<<"\nLOG:\n";
     for (int i = 0; i < (int) figs.size(); i++){
         figs[i]->draw(*model);
     }
 
-    //model->putVoxel(Inter.getDimX() - 1, Inter.getDimY() - 1, Inter.getDimZ() - 1);
-    //model->putVoxel(0, 0, 0);
-    model->writeOFF("models/etapa2/test.off");
+    model->writeOFF(path_model);
 
     for(int i = 0; i < (int) figs.size(); i++){
         delete figs[i];
     }
     delete model;
 
-    return 0;
     return 0;
 }

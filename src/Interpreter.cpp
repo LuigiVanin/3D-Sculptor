@@ -29,7 +29,7 @@ std::vector<GeometricFigure*> Interpreter::compile(std::string filename)
 
     f.open(filename.c_str());
 
-    std::cout<< "trying to open " << filename << " file...  ";
+    std::cout<< "> Trying to open \"" << filename << "\" file...  ";
     if (!f.is_open()){
         std::cout<<"failed to open file\n";
         exit(0);
@@ -103,7 +103,7 @@ std::vector<GeometricFigure*> Interpreter::compile(std::string filename)
 
                 else {
                     f.close();
-                    std::cout <<"\nKeyWord" << keyWord << "not defined\n";
+                    std::cout <<"\nKeyWord \"" << keyWord << "\" not defined\n";
                     exit(1);
                 }
             }
