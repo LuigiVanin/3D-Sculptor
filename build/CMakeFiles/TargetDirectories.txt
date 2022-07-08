@@ -1,0 +1,3 @@
+/home/htnek/Documents/repos/3D-Sculptor/build/CMakeFiles/rebuild_cache.dir
+/home/htnek/Documents/repos/3D-Sculptor/build/CMakeFiles/edit_cache.dir
+/home/htnek/Documents/repos/3D-Sculptor/build/CMakeFiles/3D_Sculptor.dir
