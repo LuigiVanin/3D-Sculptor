@@ -1,4 +1,4 @@
-# Escultor 3D em C++
+<h1 align="center">Escultor 3D</h1>
 
 ## Descrição 📎
 
@@ -169,3 +169,22 @@ Os scripts em c++ se resumem na criação da classe "Sculptor" que está no cami
 <br>
 
 8. `cutEllipsoid (int xcenter, int ycenter, int zcenter, int rx, int ry, int rz)` : O método **cutEllipsoid** consiste no recorde de voxels no padrão de uma elipisoide(representação 3D de uma ellipse) a partir da função **cutVoxel()**. Para realizar essa tarefa se utiliza a equação do elipsoide de forma computacioanl. Vale salientar que essa elipsoide não é perfeita pois usa como padrão os voxels. O retorno da função é vazio(void).
+
+## Ferramentas Utilizadas 🛠️
+
+<p align="center">
+    <img src="https://img.shields.io/badge/c++-%2300599C.svg?style=for-the-badge&logo=c%2B%2B&logoColor=white" />
+    <img src="https://img.shields.io/badge/CMake-%23008FBA.svg?style=for-the-badge&logo=cmake&logoColor=white">
+    <img src="https://img.shields.io/badge/Git-E34F26?style=for-the-badge&logo=git&logoColor=white" />
+</p>
+
+## Entre em contato 📞
+
+<p align="center">
+<a href="https://www.linkedin.com/in/luis-felipe-vanin-martins-5a5b38215">
+<img src="https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=blue">
+</a>
+<a href="mailto:luisfvanin2@gmail.com">
+<img src="https://img.shields.io/badge/Gmail:%20luisfvanin2@gmail.com-D14836?style=for-the-badge&logo=gmail&logoColor=white">
+</a>
+</p>
